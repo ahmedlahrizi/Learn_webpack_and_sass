@@ -1,0 +1,26 @@
+{
+  "name": "untitled",
+  "version": "1.0.0",
+  "description": "I'm currently learning WebPack & Sass (or Scss) so I'm uploading this repo for my tests !!!!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmedlahrizi/Learn_webpack_and_sass.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmedlahrizi/Learn_webpack_and_sass/issues"
+  },
+  "homepage": "https://github.com/ahmedlahrizi/Learn_webpack_and_sass#readme",
+  "devDependencies": {
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
