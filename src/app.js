@@ -1,3 +1,3 @@
-let log = require('./log.js');
+import log from "./log";
 
-log('slt');
+log('log');
