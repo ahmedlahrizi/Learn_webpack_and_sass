@@ -20,23 +20,19 @@ function isVisible(item) {
 
 function checkNums(firstValue, secondValue) {
     return [
-        !isNaN(parseInt(firstValue)),
-        !isNaN(parseInt(secondValue))
+        !isNaN(parseFloat(firstValue)),
+        !isNaN(parseFloat(secondValue))
     ]
 }
 
 function displayError(problemBox) {
-    let errorMessage = 'Error: Values are not correct, please check them';
-    console.log(errorMessage);
-
-    //    Logging the problem
-
+    console.log(problemBox.innerText);
+    //    Logging the problem (the error text is on the HTML)
     makeVisible(problemBox);
-    problemBox.innerText = errorMessage;
 }
 
 function displayResult(resultBox, firstValue, secondValue) {
-    let result = parseInt(firstValue) + parseInt(secondValue);
+    let result = parseFloat(firstValue) + parseFloat(secondValue);
     let resultMessage = `The result is ${result}`;
 
     console.log(resultMessage);
