@@ -4,6 +4,7 @@
     --light-grey: #eee;
     --light-blue: #dcdcff;
     --darker-blue: #576eff;
+    --danger-red: #ff8282;
 }
 
 * {
@@ -36,14 +37,16 @@ a {
 body {
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     gap: 5rem;
 }
 
 .number-input {
-    width: 85%;
+    width: 70%;
     display: grid;
     align-self: center;
-    grid-template-columns: 1fr auto 1fr 1fr;
+    grid-template-columns: 1fr auto 1fr 1.5fr;
     align-items: center;
     gap: 1.5em;
 }
@@ -75,4 +78,18 @@ input[type="submit"] {
 
 .webpack-image {
     width: 100%;
+}
+
+.error {
+    text-align: center;
+    background-color: var(--danger-red);
+    padding: 1em;
+    font-size: 2.3rem;
+}
+
+.result {
+    text-align: center;
+    background-color: var(--light-blue);
+    padding: 1em;
+    font-size: 2.3rem;
 }
