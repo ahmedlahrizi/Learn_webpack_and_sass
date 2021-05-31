@@ -26,7 +26,7 @@ function checkNums(firstValue, secondValue) {
 }
 
 function displayError(problemBox) {
-    console.log(problemBox.innerText);
+    console.error(problemBox.innerText);
     //    Logging the problem (the error text is on the HTML)
     makeVisible(problemBox);
 }
@@ -56,7 +56,7 @@ window.addEventListener('load', function () {
 
     submitButton.addEventListener('click', () => {
         console.log(`first input value ${JSON.stringify(firstNum.value)} & second ${JSON.stringify(secondNum.value)}`);
-    //    Input log
+        //    Input log
 
         let [firstValueNum, secondValueNum] = [firstNum.value, secondNum.value];
 
@@ -72,9 +72,9 @@ window.addEventListener('load', function () {
             }
 
             displayError(problemBox);
-        //    Displays an error because the values are not correct
+            //    Displays an error because the values are not correct
         } else {
-        //    Erase error block if there is no error
+            //    Erase error block if there is no error
             makeInvisible(problemBox);
             displayResult(resultBox, firstValueNum, secondValueNum);
         }

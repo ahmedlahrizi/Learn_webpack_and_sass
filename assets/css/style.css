@@ -51,19 +51,21 @@ body {
     gap: 1.5em;
 }
 
-input[type="text"], .math-operator, input[type="submit"] {
+input, .math-operator, button[type="submit"] {
     border: 1px solid var(--light-grey);
     border-radius: 2em;
     padding: .8em;
     box-shadow: 0 .35em .85em .1em rgba(0, 0, 0, 0.24);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 input:focus {
     outline: none;
+    box-shadow: 0 .35em .85em .1em rgba(0, 0, 0, 0.24),
+                0 0 5em 0 var(--light-blue);
 }
 
-input[type="submit"] {
+button[type="submit"] {
     background-color: var(--darker-blue);
     color: var(--light-grey);
 }
