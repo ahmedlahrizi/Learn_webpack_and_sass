@@ -1,82 +1,34 @@
 'use strict';
 
-// import log from "./log";
-//
-// log('log');
+import checkNums from './app/utils/checkNums';
+import displayError from './app/utils/displayError';
+import displayResult from './app/utils/displayResult';
+import * as domElements from './app/utils/getElements';
+import {isVisible, makeInvisible} from "./app/utils/visibilities";
 
-// function
+export default function handleSubmit() {
+    console.log(`first input value ${JSON.stringify(domElements.firstNum.value)}` +
+     `& second ${JSON.stringify(domElements.secondNum.value)}`);
+    //    Input log
 
-function makeVisible(item) {
-    item.style.display = 'block';
-}
+    let [firstValueNum, secondValueNum] = [domElements.firstNum.value, domElements.secondNum.value];
 
-function makeInvisible(item) {
-    item.style.display = 'none';
-}
+    let valuesCorrect = checkNums(firstValueNum, secondValueNum).every(item => item);
 
-function isVisible(item) {
-    return item.style.display === 'block';
-}
+    console.log(`Values are${valuesCorrect ? '' : ' NOT'} correct`);
 
-function checkNums(firstValue, secondValue) {
-    return [
-        !isNaN(parseFloat(firstValue)),
-        !isNaN(parseFloat(secondValue))
-    ]
-}
+    if (!valuesCorrect) {
+        // This weird every item is basically checking if all the items are true
 
-function displayError(problemBox) {
-    console.error(problemBox.innerText);
-    //    Logging the problem (the error text is on the HTML)
-    makeVisible(problemBox);
-}
-
-function displayResult(resultBox, firstValue, secondValue) {
-    let result = parseFloat(firstValue) + parseFloat(secondValue);
-    let resultMessage = `The result is ${result}`;
-
-    console.log(resultMessage);
-
-    if (!isVisible(resultBox)) {
-        makeVisible(resultBox);
-    }
-
-    resultBox.innerText = resultMessage;
-}
-
-window.addEventListener('load', function () {
-
-    let submitButton = document.querySelector('[rel="js-submit-button"]');
-    let problemBox = document.querySelector('[rel="js-problem-box"]');
-    let firstNum = document.querySelector('[rel="js-first-number"]');
-    let secondNum = document.querySelector('[rel="js-second-number"]');
-    let resultBox = document.querySelector('[rel="js-result-box"]');
-
-    // Accessing our inputs and our submit button
-
-    submitButton.addEventListener('click', () => {
-        console.log(`first input value ${JSON.stringify(firstNum.value)} & second ${JSON.stringify(secondNum.value)}`);
-        //    Input log
-
-        let [firstValueNum, secondValueNum] = [firstNum.value, secondNum.value];
-
-        let valuesCorrect = checkNums(firstValueNum, secondValueNum).every(item => item);
-
-        console.log(valuesCorrect ? 'Values are correct' : 'Values are NOT correct')
-
-        if (!valuesCorrect) {
-            // This weird every item is basically checking if all the items are true
-
-            if (isVisible(resultBox)) {
-                makeInvisible(resultBox)
-            }
-
-            displayError(problemBox);
-            //    Displays an error because the values are not correct
-        } else {
-            //    Erase error block if there is no error
-            makeInvisible(problemBox);
-            displayResult(resultBox, firstValueNum, secondValueNum);
+        if (isVisible(domElements.resultBox)) {
+            makeInvisible(domElements.resultBox)
         }
-    });
-});
+
+        displayError(domElements.problemBox);
+        //    Displays an error because the values are not correct
+    } else /* There is no error*/{
+        //    Erase error block because there is no error
+        makeInvisible(domElements.problemBox);
+        displayResult(domElements.resultBox, firstValueNum, secondValueNum);
+    }
+}

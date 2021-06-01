@@ -59,10 +59,11 @@ input, .math-operator, button[type="submit"] {
     font-size: 1.5rem;
 }
 
-input:focus {
+input:focus, button:focus {
     outline: none;
     box-shadow: 0 .35em .85em .1em rgba(0, 0, 0, 0.24),
                 0 0 5em 0 var(--light-blue);
+    opacity: .8;
 }
 
 button[type="submit"] {

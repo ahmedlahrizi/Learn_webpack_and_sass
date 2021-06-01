@@ -4,7 +4,7 @@
   "description": "I'm currently learning WebPack & Sass (or Scss) so I'm uploading this repo for my tests !!!!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack"
   },
   "repository": {
     "type": "git",
