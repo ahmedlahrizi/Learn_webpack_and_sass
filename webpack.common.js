@@ -20,7 +20,16 @@ module.exports = {
                     'css-loader',  //2. Turns css into JS
                     'sass-loader'  //1. Turn sass into css
                 ],
-            }
-        ]
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/,
+                type: "asset/ressource",
+                use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                    options: { publicPath: "" }
+                }
+                ],
+            },
+        ],
     },
 }
