@@ -1,10 +1,10 @@
 'use strict';
 
-import checkNums from './app/utils/checkNums';
-import displayError from './app/utils/displayError';
-import displayResult from './app/utils/displayResult';
-import * as domElements from './app/utils/getElements';
-import {isVisible, makeInvisible} from "./app/utils/visibilities";
+import checkNums from './utils/checkNums';
+import displayError from './utils/displayError';
+import displayResult from './utils/displayResult';
+import * as domElements from './utils/getElements';
+import {isVisible, makeInvisible} from "./utils/visibilities";
 
 export default function handleSubmit() {
     console.log(`first input value ${JSON.stringify(domElements.firstNum.value)}` +
@@ -26,7 +26,7 @@ export default function handleSubmit() {
 
         displayError(domElements.problemBox);
         //    Displays an error because the values are not correct
-    } else /* There is no error*/{
+    } else /* There is no error */ {
         //    Erase error block because there is no error
         makeInvisible(domElements.problemBox);
         displayResult(domElements.resultBox, firstValueNum, secondValueNum);

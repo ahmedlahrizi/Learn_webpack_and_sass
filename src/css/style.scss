@@ -1,37 +1,13 @@
-:root {
-    --dark-brown: #794242;
-    --light-beige: #e7dada;
-    --light-grey: #eee;
-    --light-blue: #dcdcff;
-    --darker-blue: #576eff;
-    --danger-red: #ff8282;
-}
-
-* {
-    margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
+@use "./colors";
+@use "./minireset";
 
 header {
     width: 100%;
     height: 7rem;
-    background-color: #9494bf;
+    background-color: colors.$light-purple;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-a {
-    background-color: var(--dark-brown);
-    list-style: none;
-    display: inline;
-    color: var(--light-beige);
-    padding: .7em;
-    border-radius: .6em;
-    font-family: sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: .2ch;
 }
 
 body {
@@ -40,6 +16,18 @@ body {
     justify-content: center;
     align-items: center;
     gap: 5rem;
+}
+
+.welcome {
+    background-color: colors.$dark-brown;
+    list-style: none;
+    display: inline;
+    color: colors.$light-beige;
+    padding: .7em;
+    border-radius: .6em;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: .2ch;
 }
 
 .number-input {
@@ -52,23 +40,23 @@ body {
 }
 
 input, .math-operator, button[type="submit"] {
-    border: 1px solid var(--light-grey);
+    border: 1px solid colors.$light-grey;
     border-radius: 2em;
     padding: .8em;
     box-shadow: 0 .35em .85em .1em rgba(0, 0, 0, 0.24);
     font-size: 1.5rem;
-}
 
-input:focus, button:focus {
-    outline: none;
-    box-shadow: 0 .35em .85em .1em rgba(0, 0, 0, 0.24),
-                0 0 5em 0 var(--light-blue);
-    opacity: .8;
+    &:focus {
+        outline: none;
+        box-shadow: 0 .35em .85em .1em rgba(0, 0, 0, 0.24),
+        0 0 5em 0 colors.$light-blue;
+        opacity: .8;
+    }
 }
 
 button[type="submit"] {
-    background-color: var(--darker-blue);
-    color: var(--light-grey);
+    background-color: colors.$darker-blue;
+    color: colors.$light-grey;
 }
 
 .math-operator {
@@ -76,23 +64,24 @@ button[type="submit"] {
     height: 100%;
     font-weight: bold;
     border-radius: 1em;
-    background-color: var(--light-blue);
+    background-color: colors.$light-blue;
 }
 
 .webpack-image {
     width: 100%;
 }
 
-.error {
+@mixin message-div($color) {
     text-align: center;
-    background-color: var(--danger-red);
     padding: 1em;
     font-size: 2.3rem;
+    background-color: $color;
+}
+
+.error {
+    @include message-div(colors.$danger-red);
 }
 
 .result {
-    text-align: center;
-    background-color: var(--light-blue);
-    padding: 1em;
-    font-size: 2.3rem;
+    @include message-div(colors.$light-blue);
 }
