@@ -2,32 +2,30 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/index.js',
     plugins: [
+        new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Webpack App',
-            template: './src/template.html',
-        })
+            template: './src/template.html'
+        }),
     ],
     module: {
         rules: [
             {
-                test: /\.scss$/,
+                test: /\.scss$/i,
                 use: [
-                    'style-loader',//3. Inject styles into DOM
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: ''
+                        },
+                    },//3. Inject styles into DOM
                     'css-loader',  //2. Turns css into JS
-                    'sass-loader'  //1. Turn sass into css
-                ],
-            },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/,
-                type: "asset/ressource",
-                use: [{
-                    loader: MiniCssExtractPlugin.loader,
-                    options: { publicPath: "" }
-                }
+                    'sass-loader',  //1. Turn sass into css
+                    'postcss-loader',
                 ],
             },
         ],
